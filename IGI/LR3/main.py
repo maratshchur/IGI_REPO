@@ -1,10 +1,7 @@
 # Program Name: IGI Laboratory work №3
 # Program Version: 1.0
 # Developer: Marat Shchur
-# Date: 2024-03-07
-
-
-# ToDo: add decorator 
+# Date: 2024-03-19
 from tasks.task1 import task1
 from tasks.task2 import task2
 from tasks.task3 import task3
@@ -14,7 +11,6 @@ from tasks.task5 import task5
 from additional_options.choose_options import choose_task_number
 from additional_options.validation import validate_int_value
 from additional_options.choose_options import continue_program_request
-
 
 def main():
 
@@ -36,9 +32,13 @@ def main():
             continue
         choose = continue_program_request()
         if not choose:
-            print("Exiting the program.")
+            print("Exiting the program...")
             return
 
+
 if __name__ == "__main__":
-    main()
+     main()
+
+    
+
     

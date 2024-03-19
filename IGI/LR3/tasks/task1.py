@@ -32,16 +32,26 @@ def calculate_ln_series(x, eps):
 
     return result, n
 
+def decorator(func):
+    def wrapper():
+        print("Enter the value of x from (|x|<1): ")
+        result, n = func()
+        if (result and n):
+            print(f"The result is: {result}")
+            print(f"Number of iterations is: {n}")
+    return wrapper
+
+@decorator    
 def task1():
-    x = input("Enter the value of x from (|x|<1): ")
+    x = input()
     if not validate_x_value(x):
         print("Invalid value of x")
-        return
+        return None, None
     x=validate_float_value(x)
     eps = input("Enter the desired precision (eps): ")
     eps = validate_float_value(eps)
     if eps==None:
         print("Invalid value of eps")
-        return
+        return None, None
     result, n = calculate_ln_series(x, eps)
-    print_results(result, n)
+    return result, n
