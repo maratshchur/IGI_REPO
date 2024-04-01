@@ -16,6 +16,7 @@ def find_minimum_sum(sequence):
 
 
 def task2():
+
     sequence = choose_initializing_way(generate_int_sequence, input_int_sequence)
     if not validate_list(sequence):
         print("The list is empty.")

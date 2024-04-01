@@ -1,34 +1,53 @@
 import random
 
-def generate_int_sequence():
+def generate_random_integer():
     """
     Generates a random sequence of int numbers.
 
-    Returns:
-        list: The generated sequence.
+    Yields:
+        int: The generated number.
     """
-    sequence = []
-    num_numbers = random.randint(5,10)  # Generates a random number of elements from 5 to 10
-    for _ in range(num_numbers):
-        number = random.uniform(1, 100)  
-        sequence.append(number)
-    return sequence
-
-
-def generate_float_sequence():
+    while True:
+        yield random.randint(1, 100)
+        
+def generate_random_float():
+    
     """
     Generates a random sequence of float numbers.
 
-    Returns:
-        list: The generated sequence.
+    Yields:
+        float: The generated number.
     """
-    sequence = []
-    num_numbers = random.randint(5, 10)  # Generates a random number of elements from 5 to 10
-    for _ in range(num_numbers):
-        number = random.uniform(-20, 20)  
-        sequence.append(number)
-    return sequence
+    while True:
+        yield random.uniform(-20, 20)
+        
+def generate_int_sequence(n=10):
+    """
+    Generates a sequence of random integers.
 
+    Args:
+        n (int, optional): The number of random integers to generate. Default is 10.
+
+    Returns:
+        list: List of random integers.
+    """
+    random_number_generator = generate_random_integer()
+    random_number_list = [next(random_number_generator) for _ in range(n)]
+    return random_number_list
+
+def generate_float_sequence(n=10):
+    """
+    Generates a sequence of random float numbers.
+
+    Args:
+        n (int, optional): The number of random float numbers to generate. Default is 10.
+
+    Returns:
+        list: List of random float numbers.
+    """
+    random_number_generator = generate_random_float()
+    random_number_list = [next(random_number_generator) for _ in range(n)]
+    return random_number_list
 def input_int_sequence():
     """
     Initializes a sequence of int numbers using user input.

@@ -35,9 +35,6 @@ def sum_before_last_positive(elements):
     return sum_before_last_positive
 
 
-
-
-
 def task5():
     """
     The main function to execute the program.

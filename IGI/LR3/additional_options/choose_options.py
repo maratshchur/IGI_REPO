@@ -37,7 +37,8 @@ def choose_initializing_way(func1, func2):
     """
     choice = input("Choose an option:\n1. Generate a sequence\n2. Input a sequence\n")
     if choice == "1":
-        sequence = func1()  # Generate a sequence
+        generator = func1()
+        sequence = list(generator)
     elif choice == "2":
         sequence = func2()  # Input a sequence
     else:

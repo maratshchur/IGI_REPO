@@ -8,6 +8,7 @@ import math
 from math import log
 from additional_options.validation import validate_float_value, validate_x_value
 from additional_options.print import print_results
+from additional_options.decorator import decorator
 MAX_ITERATIONS = 500
 
 def calculate_ln_series(x, eps):
@@ -32,14 +33,7 @@ def calculate_ln_series(x, eps):
 
     return result, n
 
-def decorator(func):
-    def wrapper():
-        print("Enter the value of x from (|x|<1): ")
-        result, n = func()
-        if (result and n):
-            print(f"The result is: {result}")
-            print(f"Number of iterations is: {n}")
-    return wrapper
+
 
 @decorator    
 def task1():
