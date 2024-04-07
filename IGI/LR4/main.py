@@ -4,6 +4,7 @@
 # Date: 2024-04-07
 
 from tasks.task1.task1 import task1
+from tasks.task2.task2 import task2
 from additional_options.choose_options import choose_task_number, continue_program_request
 from additional_options.validation import validate_int_value
 def main():
@@ -13,8 +14,8 @@ def main():
         task_number = validate_int_value(task_number)
         if task_number==1:
             task1()
-        # elif task_number==2:
-        #     task2()  
+        elif task_number==2:
+            task2()  
         # elif task_number==3:
         #     task3()
         # elif task_number==4:

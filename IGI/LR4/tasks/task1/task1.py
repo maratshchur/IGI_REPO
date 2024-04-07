@@ -1,15 +1,12 @@
 from tasks.task1.models import Abiturient, Exam
 from tasks.task1.output import print_task_options
-from data import CSV_FILE_PATH, PICKLE_FILE_PATH
+from tasks.task1.data import CSV_FILE_PATH, PICKLE_FILE_PATH
 from tasks.task1.serializers import save_to_pickle, save_to_csv
 from tasks.task1.deserializers import load_from_pickle
 
 def task1():
     
     exam = Exam()
-    
-    
-    
      
     while True:
         print_task_options()
