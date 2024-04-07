@@ -2,12 +2,13 @@ import math
 import matplotlib.pyplot as plt
 from math import log
 
-
-
-
 class LNCalculator:
     MAX_ITERATIONS = 500
+
     def __init__(self):
+        """
+        Initialize the LNCalculator object.
+        """
         self.result = 0
         self.iterations = 0
         self.values = []
@@ -35,9 +36,13 @@ class LNCalculator:
             self.iterations += 1
         return self.result, self.iterations
 
-   
-
     def calculate_statistics(self):
+        """
+        Calculates statistics of the calculated values.
+
+        Returns:
+            tuple: The calculated mean, median, mode, variance, and standard deviation.
+        """
         mean = self.result / self.iterations
         median = sorted(self.values)[len(self.values) // 2]
         mode = max(set(self.values), key=self.values.count)
@@ -48,11 +53,16 @@ class LNCalculator:
         return mean, median, mode, variance, standard_deviation
 
     def plot_graphs(self):
+        """
+        Plots the graph of the function values during the power series expansion.
+
+        Saves the graph as 'series.png' and displays it.
+        """
         sum = 0
         function_values = []
         for term in self.values:
             function_values.append(sum)
-            sum+=term
+            sum += term
         iteration_values = [i+1 for i in range(self.iterations)]
         plt.plot(iteration_values, function_values)
         plt.axhline(0, color='black', linewidth=0.5)
@@ -60,8 +70,8 @@ class LNCalculator:
         plt.xlabel('Iterations')
         plt.ylabel('Function value')
         plt.title('Value of ln(1+x) using power series expansion')
-        plt.annotate("End of power series expansion", xy=(self.iterations,self.result),xytext=(4,0.3),arrowprops=dict(facecolor="black",shrink=0.05))
+        plt.annotate("End of power series expansion", xy=(self.iterations, self.result), xytext=(4, 0.3),
+                     arrowprops=dict(facecolor="black", shrink=0.05))
         plt.grid(True)
         plt.savefig('series.png')
         plt.show()
-        
