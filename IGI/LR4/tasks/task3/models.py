@@ -1,7 +1,7 @@
 import math
 import matplotlib.pyplot as plt
 from math import log
-
+from tasks.task3.data import PICTURE_PATH
 class LNCalculator:
     MAX_ITERATIONS = 500
 
@@ -73,5 +73,5 @@ class LNCalculator:
         plt.annotate("End of power series expansion", xy=(self.iterations, self.result), xytext=(4, 0.3),
                      arrowprops=dict(facecolor="black", shrink=0.05))
         plt.grid(True)
-        plt.savefig('series.png')
+        plt.savefig(PICTURE_PATH)
         plt.show()

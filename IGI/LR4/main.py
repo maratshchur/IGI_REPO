@@ -6,6 +6,7 @@
 from tasks.task1.task1 import task1
 from tasks.task2.task2 import task2
 from tasks.task3.task3 import task3
+from tasks.task4.task4 import task4
 from additional_options.choose_options import choose_task_number, continue_program_request
 from additional_options.validation import validate_int_value
 def main():
@@ -19,8 +20,8 @@ def main():
             task2()  
         elif task_number==3:
             task3()
-        # elif task_number==4:
-        #     task4()
+        elif task_number==4:
+            task4()
         # elif task_number==5:
         #     task5()       
         else:
