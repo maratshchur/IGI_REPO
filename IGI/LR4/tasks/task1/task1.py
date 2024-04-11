@@ -23,9 +23,9 @@ def task1():
             if matching_abiturients:
                 print("Matched abiturients:")
                 for abiturient in matching_abiturients:
-                    print(f"Name: {abiturient.name}, Instrument: {abiturient.instrument}")
+                    print(f"Name: {abiturient.name}, Instrument: {abiturient.instrument}\n")
             else:
-                print("No abiturients found for the specified exam.")
+                print("No abiturients found for the specified exam.\n")
 
         elif choice == '3':
             save_to_csv(CSV_FILE_PATH, exam.get_all_abiturients())
@@ -41,7 +41,7 @@ def task1():
             if matching_abiturients:
                 print("Abiturients:")
                 for abiturient in matching_abiturients.keys():
-                    print(f"Name: {abiturient}, Instrument: {matching_abiturients[abiturient]}")
+                    print(f"Name: {abiturient}, Instrument: {matching_abiturients[abiturient]}\n")
             else:
                 print("No abiturients found.")
             
@@ -49,7 +49,7 @@ def task1():
             sorted_abiturients = exam.sort_by_name()
             print("Sorted abiturients by name:")
             for abiturients in sorted_abiturients:
-                print(f"Name: {abiturients.name}, Instrument: {abiturients.instrument}")
+                print(f"Name: {abiturients.name}, Instrument: {abiturients.instrument}\n")
                     
         elif choice == '7':
             break

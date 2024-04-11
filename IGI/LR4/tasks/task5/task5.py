@@ -1,5 +1,4 @@
-import numpy as np
-from tasks.task5.initializer import generate_random_int, generate_matrix
+from tasks.task5.initializer import generate_random_int
 from tasks.task5.models import ModificatedMatrix
 
 def task5():

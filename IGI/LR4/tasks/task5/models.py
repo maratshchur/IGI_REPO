@@ -48,6 +48,12 @@ class Matrix(list):
         """
         return np.std(self.matrix)
     
+    def numpy_corcoef(self):
+        return np.corrcoef(self.matrix)
+    
+    def numpy_median(self):
+        return np.median(self.matrix)
+    
     def variance(self):
         """
         Calculates the variance of the elements in the matrix.
