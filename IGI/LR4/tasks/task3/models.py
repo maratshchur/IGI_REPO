@@ -2,6 +2,8 @@ import math
 import matplotlib.pyplot as plt
 from math import log
 from tasks.task3.data import PICTURE_PATH
+
+
 class LNCalculator:
     MAX_ITERATIONS = 500
 

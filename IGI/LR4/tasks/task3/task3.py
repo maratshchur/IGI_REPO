@@ -3,9 +3,7 @@ from tasks.task3.models import LNCalculator
 from math import log
 import numpy as np
 import matplotlib.pyplot as plt
-
-import numpy as np
-import matplotlib.pyplot as plt
+from tasks.task3.data import FUNCTION_PATH
 
 def build_plot():
     """
@@ -27,7 +25,7 @@ def build_plot():
     plt.ylabel('ln(1+x)')
     plt.title('Graph of ln(1+x)')
     plt.grid(True)
-    plt.savefig('function.png')
+    plt.savefig(FUNCTION_PATH)
     plt.show()
     
     

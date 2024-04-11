@@ -3,11 +3,16 @@ from tasks.task1.decorator import catch_wrong_exam_name
 class Person:
     def __init__(self, name):
         self.name = name
+    def __str__(self):
+        return f"Person: {self.name}"
         
 class Abiturient(Person):
     def __init__(self, name, instrument):
         super().__init__(name)
         self.instrument = instrument
+    
+    def __str__(self):
+        return f"Abiturient: {self.name}, Instrument: {self.instrument}"
 
 class Exam:
     """
