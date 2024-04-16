@@ -1,5 +1,5 @@
 from tasks.task3.additional_options.validation import validate_x_value, validate_float_value
-from tasks.task3.models import LNCalculator
+from tasks.task3.models import LNDrawing
 from math import log
 import numpy as np
 import matplotlib.pyplot as plt
@@ -19,33 +19,33 @@ from tasks.task3.data import FUNCTION_PATH
 # Math F(x) – значение функции, вычисленное с помощью модуля math.
 # в) сохранить графики в файл
 
-def build_plot():
-    """
-    Builds and saves a plot of the function ln(1+x).
+# def build_plot():
+#     """
+#     Builds and saves a plot of the function ln(1+x).
 
-    The plot is saved as 'function.png' and displayed on the screen.
+#     The plot is saved as 'function.png' and displayed on the screen.
 
-    Parameters:
-        None
+#     Parameters:
+#         None
 
-    Returns:
-        None
-    """
-    x = np.linspace(-0.9, 1, 100)
-    y = np.log(1 + x)
+#     Returns:
+#         None
+#     """
+#     x = np.linspace(-0.9, 0.9, 100)
+#     y = np.log(1 + x)
 
-    plt.plot(x, y)
-    plt.xlabel('x')
-    plt.ylabel('ln(1+x)')
-    plt.title('Graph of ln(1+x)')
-    plt.grid(True)
-    plt.savefig(FUNCTION_PATH)
-    plt.show()
+#     plt.plot(x, y)
+#     plt.xlabel('x')
+#     plt.ylabel('ln(1+x)')
+#     plt.title('Graph of ln(1+x)')
+#     plt.grid(True)
+#     plt.savefig(FUNCTION_PATH)
+#     plt.show()
     
     
 def task3():
     
-    calculator = LNCalculator()
+    calculator = LNDrawing()
     x = input("Enter x: ")
     if not validate_x_value(x):
         print("Invalid value of x")
@@ -68,5 +68,5 @@ def task3():
     print("Standard Deviation: ", standard_deviation)
     
     calculator.plot_graphs()
-    build_plot()
+    calculator.function_plot()
     

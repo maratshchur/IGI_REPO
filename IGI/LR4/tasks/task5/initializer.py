@@ -2,12 +2,12 @@ import numpy as np
 
 def generate_random_int():
     """
-    Generates a random integer between 1 and 3 (inclusive).
+    Generates a random integer between 2 and 4 (inclusive).
 
     Returns:
-    int: Random integer between 1 and 3.
+    int: Random integer between 2 and 4.
     """
-    return np.random.randint(1, 4)
+    return np.random.randint(2, 4)
 
 def generate_matrix(n, m):
     """

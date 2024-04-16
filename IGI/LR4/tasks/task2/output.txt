@@ -1,24 +1,23 @@
 Number of sentences in the text: 5
-Number of narrative sentences: 5
-Number of interrogative sentences: 0
-Number of imperative sentences: 0
+Number of narrative sentences: 3
+Number of interrogative sentences: 1
+Number of imperative sentences: 1
 Average sentence length (in characters): 76.2
 Average word length (in characters): 4.884615384615385
-Number of smileys: 0
+Number of smileys: 1
 List of words with less than 5 characters:
 The sun the a warm glow over the The the a in the sky in the As the the to a It was a of s the soul and a from the
 
 Original text with highlighted character pairs:
 The sun slowly dipped below the horizon, casting a warm golden glow over the tranquil ocean.
 The gentle waves lapped against the sandy shore, creating a soothing melody.
-Seagulls soared gracefully in the sky, their calls echoing in the salty breeze.
-As the ?eV?ening descended, the stars began to twinkle, painting a mesmerizing scene above.
+Seagulls soared gracefully in the sky, their calls echoing in the salty breeze!
+As the ?eV?ening descended, the stars began to twinkle, painting a mesmerizing scene above? :---)
 It was a moment of serene beauty, where nature's wonders embraced the soul and offered a peaceful escape from the bustling world.
 
 Number of words in the text: 78
 Words with an even number of letters:
-slowly dipped warm golden glow over tranquil gentle lapped creating soothing melody Seagulls soared gracefully in breeze As to painting It moment of serene beauty
-nature embraced soul peaceful escape from bustling
+slowly dipped warm golden glow over tranquil gentle lapped creating soothing melody Seagulls soared gracefully in breeze As to painting It moment of serene beauty nature embraced soul peaceful escape from bustling
 
 Shortest word starting with 'a': a
 Repeated words:

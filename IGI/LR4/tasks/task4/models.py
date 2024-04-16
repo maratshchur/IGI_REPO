@@ -54,7 +54,7 @@ class RegularPentagon(GeometricFigure):
         """
         
         return "Shape: Regular Pentagon, Side Length: {}, Color: {}, Area: {}".format(
-            self.side_length, self.color, self.calculate_area()
+            self.side_length, self.color._color, self.calculate_area()
         )
         
     def get_pentagon_coordinates(self, side_length):

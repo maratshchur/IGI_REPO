@@ -32,5 +32,7 @@ def task2():
     analyzer = TextAnalyzer(INPUT_TXT_PATH, OUTPUT_TXT_PATH)
     analyzer.read_text()
     analyzer.save_results()
-    analyzer.archive_results()
     print("Text analised succesfully")
+    print(f"Results saved in {OUTPUT_TXT_PATH}")
+    analyzer.archive_results()
+    

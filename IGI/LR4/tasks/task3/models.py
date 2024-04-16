@@ -1,7 +1,8 @@
 import math
 import matplotlib.pyplot as plt
 from math import log
-from tasks.task3.data import PICTURE_PATH
+from tasks.task3.data import PICTURE_PATH, MYFUNCTION_PATH
+import numpy as np
 
 
 class LNCalculator:
@@ -26,6 +27,7 @@ class LNCalculator:
         Returns:
             tuple: The calculated value of ln(x) and the number of terms required.
         """
+        self.eps = eps
         self.result = 0.0
         term = 0
         self.iterations = 0
@@ -54,6 +56,7 @@ class LNCalculator:
 
         return mean, median, mode, variance, standard_deviation
 
+class PlotMixin:
     def plot_graphs(self):
         """
         Plots the graph of the function values during the power series expansion.
@@ -77,3 +80,28 @@ class LNCalculator:
         plt.grid(True)
         plt.savefig(PICTURE_PATH)
         plt.show()
+        
+    def function_plot(self):
+        x_data = np.linspace(-0.9, 0.9, 100)
+        y_data = []
+        for x in x_data:
+            a, b = self.calculate_ln_series(x,self.eps)
+            y_data.append(a)
+        y_data=np.array(y_data)
+        
+        plt.plot(x_data, y_data, color='blue', label='My series expansion Function')
+        
+        x_data = np.linspace(-0.9, 0.9, 100)
+        y_data = np.log(1 + x_data)
+        
+        plt.plot(x_data, y_data, color='red', label='Original Function')
+        
+        plt.xlabel('x')
+        plt.ylabel('ln(1+x)')
+        plt.title('Graph of ln(1+x)')
+        plt.grid(True)
+        plt.savefig(MYFUNCTION_PATH)
+        plt.show()
+
+class LNDrawing(LNCalculator, PlotMixin):
+    pass

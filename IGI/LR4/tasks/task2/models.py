@@ -68,6 +68,7 @@ class TextAnalyzer:
 
         """
         narrative_sentences = re.findall(r'[A-Z][^.!?]*\.', self.text)
+        narrative_sentences += re.findall(r'[A-Z][^.!?]*\.{3}', self.text)
         interrogative_sentences = re.findall(r'[A-Z][^.!?]*\?', self.text)
         imperative_sentences = re.findall(r'[A-Z][^.!?]*!', self.text)
         return len(narrative_sentences), len(interrogative_sentences), len(imperative_sentences)
@@ -164,15 +165,15 @@ class TextAnalyzer:
         return [word for word in self.word_counts if len(word) % 2 == 0]
 
     def find_shortest_a_word(self):
-        """
-        Find and return the shortest word starting with 'a'.
-
-        Returns:
-            str or None: The shortest word starting with 'a', or None if no such word is found.
-
-        """
-        a_words = [word for word in self.words if word.startswith('a')]
-        return min(a_words, key=len) if a_words else None
+        pattern = r'\ba\w*\b'
+        matches = re.findall(pattern, self.text)
+    
+        shortest_word = None
+        for word in matches:
+            if shortest_word is None or len(word) < len(shortest_word):
+                shortest_word = word
+    
+        return shortest_word
 
     def find_repeated_words(self):
         """
