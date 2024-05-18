@@ -1,0 +1,15 @@
+DEBUG:django.utils.autoreload:Apps ready_event triggered. Sending autoreload_started signal.
+DEBUG:django.utils.autoreload:Watching dir D:\4_SEM\IGI\253501_Shchur_28\IGI\LR5\FurnitureStore\portal\templates with glob **/*.
+DEBUG:django.utils.autoreload:Watching dir D:\4_SEM\IGI\253501_Shchur_28\IGI\LR5\FurnitureStore\users\templates with glob **/*.
+DEBUG:django.utils.autoreload:Watching dir C:\Users\marat\AppData\Local\Programs\Python\Python312\Lib\site-packages\tz_detect\templates with glob **/*.
+DEBUG:django.utils.autoreload:Watching dir D:\4_SEM\IGI\253501_Shchur_28\IGI\LR5\FurnitureStore\products\templates with glob **/*.
+DEBUG:django.utils.autoreload:Watching dir D:\4_SEM\IGI\253501_Shchur_28\IGI\LR5\FurnitureStore\locale with glob **/*.mo.
+DEBUG:django.utils.autoreload:Watching dir D:\4_SEM\IGI\253501_Shchur_28\IGI\LR5\FurnitureStore\products\locale with glob **/*.mo.
+DEBUG:django.utils.autoreload:Watching dir D:\4_SEM\IGI\253501_Shchur_28\IGI\LR5\FurnitureStore\users\locale with glob **/*.mo.
+DEBUG:django.utils.autoreload:Watching dir D:\4_SEM\IGI\253501_Shchur_28\IGI\LR5\FurnitureStore\portal\locale with glob **/*.mo.
+DEBUG:django.utils.autoreload:Watching dir C:\Users\marat\AppData\Local\Programs\Python\Python312\Lib\site-packages\tz_detect\locale with glob **/*.mo.
+DEBUG:django.db.backends:(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG:django.db.backends:(0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default

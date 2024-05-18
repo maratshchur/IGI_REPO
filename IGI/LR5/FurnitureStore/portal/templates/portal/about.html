@@ -1,0 +1,14 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>О нас</h1>
+  <p>{{ company_info.text }}</p>
+  <img src="{{ company_info.logo.url }}" alt="Логотип компании">
+  {% if company_info.video %}
+    <video src="{{ company_info.video.url }}" controls></video>
+  {% endif %}
+  <h2>История</h2>
+  <p>{{ company_info.history }}</p>
+  <h2>Реквизиты</h2>
+  <p>{{ company_info.requisites }}</p>
+{% endblock %}

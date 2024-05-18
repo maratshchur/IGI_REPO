@@ -1,0 +1,19 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Виды изделий</h1>
+  <ul>
+    {% for product_type in product_types %}
+      <li>
+        {{ product_type.name }}
+        {% if request.user.is_superuser %}
+          <a href="{% url 'update_product_type' product_type.id %}" class="btn btn-secondary">Изменить</a>
+          <a href="{% url 'delete_product_type' product_type.id %}" class="btn btn-danger">Удалить</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% if request.user.is_superuser %}
+    <a href="{% url 'create_product_type' %}" class="btn btn-primary">Добавить вид изделия</a>
+  {% endif %}
+{% endblock %}

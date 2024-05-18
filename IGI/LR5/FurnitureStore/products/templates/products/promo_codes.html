@@ -1,0 +1,24 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Промокоды</h1>
+  <ul>
+    {% for promo_code in promo_codes %}
+      <li>
+        {{ promo_code.code }} ({{ promo_code.discount }}%)
+        {% if request.user.is_superuser %}
+          {% if promo_code.is_active %}
+            <span class="badge badge-success">Активен</span>
+          {% else %}
+            <span class="badge badge-danger">Не активен</span>
+          {% endif %}
+          <a href="{% url 'update_promocode' promo_code.id %}" class="btn btn-secondary">Изменить</a>
+          <a href="{% url 'delete_promocode' promo_code.id %}" class="btn btn-danger">Удалить</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% if request.user.is_superuser %}
+    <a href="{% url 'create_promocode' %}" class="btn btn-primary">Добавить промокод</a>
+  {% endif %}
+{% endblock %}

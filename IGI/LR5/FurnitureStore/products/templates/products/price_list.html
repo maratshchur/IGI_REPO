@@ -1,0 +1,24 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Прайс-лист</h1>
+  <table>
+    <tr>
+      <th>Тип мебели</th>
+      <th>Модель</th>
+      <th>Цена</th>
+    </tr>
+    {% for product_type in product_types %}
+      <tr>
+        <td>{{ product_type.name }}</td>
+        <td>
+          {% for product in products %}
+            {% if product.product_type == product_type %}
+              {{ product.model }} ({{ product.price }} BYN)
+            {% endif %}
+          {% endfor %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

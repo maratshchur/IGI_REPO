@@ -1,0 +1,32 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<h1>Мои заказы</h1>
+
+{% if orders %}
+    <ul>
+    {% for order in orders %}
+        <li>
+            <img src="{{ order.product.image.url }}" alt="{{ order.product.name }}" style="width: 50px; height: 50px;">
+            <br>
+            {{ order.product.name }} ({{ order.product.price }} BYN)
+            Количество: {{ order.quantity }}
+            <br>
+            Точка самовывоза: {{ order.pickup_point.name }}
+            <br>
+            Дата заказа: {{ order.date }}
+            <br>
+            Дата выполнения заказа: {{ order.completion_date }}
+            <br>
+            Промокод: {{ order.promocode }}
+            <br>
+            <br>
+
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>У вас нет заказов.</p>
+{% endif %}
+
+{% endblock %}

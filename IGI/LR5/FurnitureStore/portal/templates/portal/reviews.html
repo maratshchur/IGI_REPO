@@ -1,0 +1,15 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Отзывы</h1>
+  <ul>
+    {% for review in reviews_list %}
+      <li>
+        <h2>{{ review.user.username }}</h2>
+        <p>{{ review.text }}</p>
+        <p>Оценка: {{ review.rating }}/10</p>
+      </li>
+    {% endfor %}
+  </ul>
+  {% comment %} <a href="{% url 'add_review' %}">Добавить отзыв</a> {% endcomment %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Список заказчиков</h1>
+  <ul>
+    {% for city, customers in customer_list %}
+      <li>
+        {{ city }}
+        <ul>
+          {% for customer in customers %}
+            <li>{{ customer.name }} ({{ customer.email }})</li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

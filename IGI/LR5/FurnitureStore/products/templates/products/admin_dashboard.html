@@ -1,0 +1,105 @@
+{% extends 'products/base.html' %}
+
+{% load humanize %}
+{% load static %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+
+<h2>Прайс-лист на различные типы мебели</h2>
+<style>
+    .table-cell {
+        padding: 10px;
+    }
+</style>
+
+<table>
+    <tr>
+        <th class="table-cell">Наименование</th>
+        <th class="table-cell">Код продукта</th>
+        <th class="table-cell">Вид изделия</th>
+        <th class="table-cell">Модель</th>
+        <th class="table-cell">Цена</th>
+        <th class="table-cell">Время изготовления (дней)</th>
+        <th class="table-cell">Активен</th>
+    </tr>
+    {% for product in products %}
+    <tr>
+        <td class="table-cell">{{ product.name }}</td>
+        <td class="table-cell">{{ product.code }}</td>
+        <td class="table-cell">{{ product.product_type.name }}</td>
+        <td class="table-cell">{{ product.model }}</td>
+        <td class="table-cell">{{ product.price|intcomma }}</td>
+        <td class="table-cell">{{ product.production_time }}</td>
+        <td class="table-cell">{{ product.is_active|yesno:"Да, Нет" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Список заказчиков с группировкой по городам</h2>
+<table>
+    <thead>
+        <tr>
+            <th class="table-cell">Город</th>
+            <th class="table-cell">Клиент</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for city, customers in city_customers.items %}
+            <tr>
+                <td class="table-cell">{{ city }}</td>
+                <td class="table-cell"> 
+                    <ul>
+                        {% for customer in customers %}
+                            <li>{{ customer.user.username }} ({{ customer.address }})</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Мебель, пользующаяся наибольшим спросом</h2>
+<html>
+<body>
+    <img src="{% static 'popular_products_chart.png' %}" alt="Popular Products Chart">
+</body>
+</html>
+
+<h2>Ежемесячный объем продаж мебели каждого вида</h2>
+<table>
+    <tr>
+        <th class="table-cell">Мебель</th>
+        <th class="table-cell">Месяц</th>
+        <th class="table-cell">Количество</th>
+    </tr>
+    {% for item in monthly_sales %}
+    <tr>
+        <td class="table-cell">{{ item.product__name }}</td>
+        <td class="table-cell">{{ item.date__month }}</td>
+        <td class="table-cell">{{ item.total_quantity }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Годовой отчет поступлений от продаж</h2>
+<table>
+    <tr>
+        <th class="table-cell"> Год</th>
+        <th class="table-cell">Поступления</th>
+    </tr>
+    {% for item in annual_revenue %}
+    <tr>
+        <td class="table-cell">{{ item.date__year }}</td>
+        <td class="table-cell">{{ item.total_revenue|floatformat:2 }} BYN</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Тренды продаж</h2>
+<h3>График ежемесячных продаж</h3> 
+<img src="{% static 'monthly_sales.png' %}" alt="Monthly Sales">
+<h3>График линейных трендов</h3> 
+<img src="{% static 'linear_trends.png' %}" alt="Linear Trends">
+{% endblock %}

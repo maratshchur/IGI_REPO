@@ -1,0 +1,20 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Панель сотрудника</h1>
+
+  <h2>Заказы</h2>
+  <ul>
+    {% for order in orders %}
+      <li>{{ order.date }} - {{ order.product.name }} ({{ order.quantity }}) - {{ order.revenue }} BYN.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Клиенты</h2>
+  <ul>
+    {% for wholesaler in wholesalers %}
+      <li>{{ wholesaler.user.username }} ({{ wholesaler.city }})</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

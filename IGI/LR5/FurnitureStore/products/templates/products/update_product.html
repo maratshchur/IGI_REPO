@@ -1,0 +1,10 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Обновить продукт</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Обновить</button>
+  </form>
+{% endblock %}

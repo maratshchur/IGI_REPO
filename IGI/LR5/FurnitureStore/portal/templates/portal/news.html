@@ -1,0 +1,15 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Новости</h1>
+  <ul>
+    {% for news in news_list %}
+      <li>
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.content|truncatewords:20 }}</p>
+        {% comment %} <p><a href="{% url 'news_detail' news.pk %}">Читать далее</a></p> {% endcomment %}
+        <img src="{{ news.image.url }}" alt="Изображение новости">
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

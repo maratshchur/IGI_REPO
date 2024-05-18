@@ -1,0 +1,20 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Продукты</h1>
+  <ul>
+    {% for product in products %}
+      <li>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" width="50" height="50">
+        {{ product.name }} ({{ product.code }})
+        {% if request.user.is_superuser %}
+          <a href="{% url 'update_product' product.id %}" class="btn btn-secondary">Изменить</a>
+          <a href="{% url 'delete_product' product.id %}" class="btn btn-danger">Удалить</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% if request.user.is_superuser %}
+    <a href="{% url 'create_product' %}" class="btn btn-primary">Добавить продукт</a>
+  {% endif %}
+{% endblock %}

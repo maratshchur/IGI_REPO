@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+{% load tz_detect %}
+{% tz_detect %}
+
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="{% url 'home' %}" style="margin-right: 20px;">Главная</a>
+            {% comment %} <a href="{% url 'about' %}" style="margin-right: 20px;">О нас</a> {% endcomment %}
+            <a href="{% url 'news' %}" style="margin-right: 20px;">Новости</a>
+            <a href="{% url 'dictionary' %}" style="margin-right: 20px;">Часто задаваемые вопросы</a>
+            <a href="{% url 'privacy_policy' %}" style="margin-right: 20px;">Политика конфиденциальности</a>
+            <a href="{% url 'vacancies' %}" style="margin-right: 20px;">Вакансии</a>
+            <a href="{% url 'reviews' %}" style="margin-right: 20px;">Отзывы</a>
+            
+
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'promo_codes' %}" style="margin-right: 20px;">Промокоды</a>
+                <a href="{% url 'pickup_points_list' %}" style="margin-right: 20px;">Точки самовывоза</a>
+
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}" style="margin-right: 20px;">Выйти</a>
+            {% else %}
+                <a href="{% url 'login' %}" style="margin-right: 20px;">Войти</a>
+                <a href="{% url 'client_register' %}">Зарегистрироваться</a>
+            {% endif %}
+        </div>
+        <html>
+    <head></head>
+    <body>
+      {% now "j F Y H:i" %}
+      {% tz_detect %}
+    </body>
+</html>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Контактная информация</h5>
+                    <p>marat.shchur@gmail.com</p>
+                    <p>+375336532182</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Copyright</h5>
+                    <p>&copy; 2024 furniture.com All rights reserved.</p>
+                    <address>
+                        Written by Marat Shchur<br>
+                        Email: marat.shchur@gmail.com
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

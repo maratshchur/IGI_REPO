@@ -1,0 +1,16 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Контакты</h1>
+  <ul>
+    {% for employee in employees %}
+      <li>
+        <img src="{{ employee.photo.url }}" alt="Фото сотрудника">
+        <h2>{{ employee.user.username }}</h2>
+        <p>{{ employee.description }}</p>
+        <p>Телефон: {{ employee.phone }}</p>
+        <p>Email: {{ employee.email }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="{% url 'home' %}" style="margin-right: 20px;">Главная</a>
+            <a href="{% url 'login' %}" style="margin-right: 20px;">Войти</a>
+            <a href="{% url 'client_register' %}">Зарегистрироваться</a>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Контактная информация</h5>
+                    <p>marat.shchur@gmail.com</p>
+                    <p>+375336532182</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Copyright</h5>
+                    <p>&copy; 2024 furniture.com All rights reserved.</p>
+                    <address>
+                        Written by Marat Shchur<br>
+                        Email: marat.shchur@gmail.com
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

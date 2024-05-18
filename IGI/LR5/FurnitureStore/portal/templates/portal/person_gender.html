@@ -1,0 +1,14 @@
+{% extends 'products/base.html' %}
+{% block content %}
+<h1>Пол человека по имени</h1>
+<form action="" method="get">
+    <label for="name">Введите имя:</label>
+    <input type="text" name="name" id="name" value="{{ name }}">
+    <button type="submit">Узнать пол</button>
+</form>
+{% if gender %}
+    <p>Имя: {{ name }}</p>
+    <p>Пол: {{ gender }}</p>
+    <p>Вероятность: {{ probability }}%</p>
+{% endif %}
+{% endblock %}

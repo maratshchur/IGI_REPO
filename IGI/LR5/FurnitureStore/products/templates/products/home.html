@@ -1,0 +1,85 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+
+<br> <br>
+
+<form action="{% url 'search_products' %}" method="get"> 
+    <input type="search" name="q" placeholder="Поиск по названию товара" value="{{ request.GET.q }}"> 
+    <button type="submit">Искать</button> 
+</form> 
+<br> 
+<form action="{% url 'filter_products' %}" method="get"> 
+    <label for="price_min">Цена от:</label> 
+    <input type="number" name="price_min" id="price_min" value="{{ request.GET.price_min }}"> 
+    <label for="price_max">до:</label> 
+    <input type="number" name="price_max" id="price_max" value="{{ request.GET.price_max }}"> 
+    BYN 
+    <br> <br> 
+    <label for="product_type">Тип товара:</label> 
+    <select name="product_type" id="product_type"> 
+        <option value="">Все</option> 
+        {% for type in product_types %} 
+            <option value="{{ type }}" {% if request.GET.product_type == type %}selected{% endif %}>{{ type }}</option> 
+        {% endfor %} 
+    </select> 
+    <button type="submit">Фильтровать</button> 
+</form> 
+<br>
+
+{% if request.user.is_authenticated %}
+
+<div style="float: right; margin-top: -20px;"> 
+    <p>Здравствуйте, {{ request.user.username }}!</p> 
+    <div style="display: flex; flex-direction: column;">
+        {% if request.user.is_staff and not request.user.is_superuser %} 
+            <a href="{% url 'employee_dashboard' %}" class="btn btn-primary">Панель сотрудника</a> 
+        {% endif %} 
+        {% if request.user.is_superuser %} 
+            <a href="{% url 'employee_register' %}" class="btn btn-primary">Регистрация сотрудника</a> 
+            <a href="{% url 'admin_dashboard' %}" class="btn btn-primary">Административная панель</a> 
+        {% endif %} 
+        {% if not request.user.is_staff and not request.user.is_superuser %} 
+            <a href="{% url 'orders' %}" class="btn btn-primary">Мои заказы</a> 
+        {% endif %} 
+        <a href="{% url 'quote_of_the_day' %}" class="btn btn-primary">Цитата дня</a> 
+        <a href="{% url 'person_gender' %}" class="btn btn-primary">Пол по имени</a> 
+    </div>
+</div> 
+{% endif %} 
+
+<p> 
+    <a href="{% url 'products_list' %}" class="btn btn-primary">Все товары</a> 
+    <a href="{% url 'product_types_list' %}" class="btn btn-primary">Типы товаров</a> 
+</p>
+
+{% if products %}
+
+<table> 
+    <tr> 
+    {% for product in products %} 
+        <td style="width: 40%; vertical-align: top;"> 
+            <h2><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h2> 
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 150px; height: 150px;"> 
+            <p>Код: {{ product.code }}</p> 
+            <p>Тип: {{ product.product_type }}</p> 
+            <p>Модель: {{ product.model }}</p> 
+            <p>Цена: {{ product.price }}</p> 
+            {% if request.user.is_authenticated and not request.user.is_staff and not request.user.is_superuser %} 
+                <a href="{% url 'create_order' product.id %}" class="btn btn-primary">Заказать</a> 
+            {% endif %} 
+        </td> 
+        {% if forloop.counter|divisibleby:4 %} 
+            </tr><tr> 
+        {% endif %} 
+    {% endfor %} 
+    </tr> 
+</table> 
+{% else %} 
+    <p>Товары не найдены.</p> 
+{% endif %}
+
+<h2>Календарь</h2>
+<pre>{{ calendar }}</pre>
+
+{% endblock %}

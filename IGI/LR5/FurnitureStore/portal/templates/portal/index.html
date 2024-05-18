@@ -1,0 +1,8 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+  <h1>Последняя статья</h1>
+  <p>{{ latest_article.title }}</p>
+  <p>{{ latest_article.content|truncatewords:20 }}</p>
+  {% comment %} <p><a href="{% url 'article_detail' latest_article.pk %}">Читать далее</a></p> {% endcomment %}
+{% endblock %}
