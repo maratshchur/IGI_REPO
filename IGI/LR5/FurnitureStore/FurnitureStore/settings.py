@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-au+cf-gh(fvn9g3e@g)6r-pxtmby(f=7r0^tq-@17!7y00v3-$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'portal',
     'django.contrib.humanize',
     'tz_detect',
-    
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -197,3 +197,8 @@ LOGIN_REDIRECT_URL = 'home'
 TZ_DETECT_COUNTRIES = ('CN', 'US', 'IN', 'JP', 'BR', 'RU', 'DE', 'FR', 'GB')
 
 TZ_SESSOIN_KEY = "my-session-key"
+
+GRAPH_MODELS = {
+    "all_applications": True,
+    "group_models": True
+}
