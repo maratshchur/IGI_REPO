@@ -1,0 +1,50 @@
+2024-06-20 23:33:41,197 Home page accessed
+2024-06-20 23:33:44,082 Home page accessed
+2024-06-20 23:33:58,161 User accessed login page
+2024-06-20 23:34:12,373 User accessed login page
+2024-06-20 23:34:13,006 Login form is valid, authenticating user
+2024-06-20 23:34:13,635 User authenticated, logging in
+2024-06-20 23:34:13,667 Home page accessed
+2024-06-20 23:34:17,139 Product types list page accessed
+2024-06-20 23:34:19,391 Create product type page accessed
+2024-06-20 23:34:23,361 Create product type page accessed
+2024-06-20 23:34:23,381 Product type created
+2024-06-20 23:34:23,392 Product types list page accessed
+2024-06-20 23:34:27,096 Create product type page accessed
+2024-06-20 23:34:29,240 Create product type page accessed
+2024-06-20 23:34:29,253 Product type created
+2024-06-20 23:34:29,267 Product types list page accessed
+2024-06-20 23:34:30,512 Create product type page accessed
+2024-06-20 23:34:36,826 Home page accessed
+2024-06-20 23:34:38,532 Products list page accessed
+2024-06-20 23:34:39,449 Create product page accessed
+2024-06-20 23:35:08,797 Create product page accessed
+2024-06-20 23:35:16,491 Create product page accessed
+2024-06-20 23:35:18,277 Home page accessed
+2024-06-20 23:35:20,420 Home page accessed
+2024-06-20 23:35:22,869 Pickup points list page accessed
+2024-06-20 23:35:24,325 Create pickup point page accessed
+2024-06-20 23:35:31,160 Create pickup point page accessed
+2024-06-20 23:35:31,176 Pickup point created
+2024-06-20 23:35:31,186 Pickup points list page accessed
+2024-06-20 23:35:32,949 Create pickup point page accessed
+2024-06-20 23:35:43,714 Create pickup point page accessed
+2024-06-20 23:35:43,724 Pickup point created
+2024-06-20 23:35:43,738 Pickup points list page accessed
+2024-06-20 23:35:46,783 Home page accessed
+2024-06-20 23:35:48,027 Products list page accessed
+2024-06-20 23:35:49,295 Create product page accessed
+2024-06-20 23:36:10,974 Create product page accessed
+2024-06-20 23:36:11,009 Product created
+2024-06-20 23:36:11,016 Products list page accessed
+2024-06-20 23:36:16,396 Home page accessed
+2024-06-20 23:53:01,874 User accessed login page
+2024-06-20 23:53:01,875 User is already authenticated, redirecting to home page
+2024-06-20 23:53:01,883 Home page accessed
+2024-06-20 23:58:16,127 Home page accessed
+2024-06-20 23:59:34,978 Home page accessed
+2024-06-20 23:59:45,875 Home page accessed
+2024-06-21 00:00:40,810 Home page accessed
+2024-06-21 00:00:58,700 News page viewed
+2024-06-21 00:01:00,217 Dictionary page viewed
+2024-06-21 00:01:01,581 Privacy policy page viewed
