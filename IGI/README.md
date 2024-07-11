@@ -1,4 +1,4 @@
-**Mebel Factory Project**
+**Furniture Factory Project**
 ==========================
 
 **Overview**
