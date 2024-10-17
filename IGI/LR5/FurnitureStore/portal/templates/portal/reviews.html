@@ -1,15 +1,43 @@
 {% extends 'products/base.html' %}
 
 {% block content %}
-  <h1>Отзывы</h1>
-  <ul>
+  <h1 style="text-align: center; margin-bottom: 20px;">Отзывы</h1>
+  <ul style="list-style-type: none; padding: 0; max-width: 800px; margin: 0 auto;">
     {% for review in reviews_list %}
-      <li>
-        <h2>{{ review.user.username }}</h2>
-        <p>{{ review.text }}</p>
-        <p>Оценка: {{ review.rating }}/10</p>
+      <li style="margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9;">
+        <h2 style="margin: 0; font-size: 1.5em; color: #333;">{{ review.user.user.username }}</h2>
+        <p style="margin: 10px 0;">{{ review.text }}</p>
+        <p style="font-weight: bold; color: #555;">Оценка: {{ review.rating }}/10</p>
+        {% if request.user.is_authenticated and review.user.user == request.user %}
+          <a href="{% url 'delete_review' review.id %}" style="color: #dc3545; text-decoration: none; font-weight: bold;">Удалить</a>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
-  {% comment %} <a href="{% url 'add_review' %}">Добавить отзыв</a> {% endcomment %}
+  {% if request.user.is_authenticated %}
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="{% url 'add_review' %}" style="background-color: #007BFF; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Добавить отзыв</a>
+    </div>
+  {% endif %}
+  
+  <style>
+    ul {
+      max-width: 800px; /* Ограничение ширины */
+      margin: 0 auto; /* Центрирование */
+      padding: 0;
+    }
+
+    h1 {
+      font-family: Arial, sans-serif;
+      color: #444;
+    }
+
+    li {
+      transition: background-color 0.3s; /* Эффект плавности при наведении */
+    }
+
+    li:hover {
+      background-color: #eaeaea; /* Эффект наведения */
+    }
+  </style>
 {% endblock %}

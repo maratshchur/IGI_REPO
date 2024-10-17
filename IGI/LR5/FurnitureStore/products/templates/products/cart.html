@@ -1,0 +1,70 @@
+{% extends 'products/base.html' %}
+{% load multiply %}
+{% block content %}
+<h1>Корзина</h1>
+
+{% if cart_items %}
+<table>
+    <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Цена</th>
+            <th>Общая стоимость</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart_items %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.product.price }} BYN</td>
+            <td>{{ item.quantity|multiply:item.product.price }} BYN</td>
+            <td>
+                <form action="{% url 'update_cart' item.product.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="increase">+</button>
+                    <button type="submit" name="action" value="decrease">-</button>
+                </form>
+                <form action="{% url 'remove_from_cart' item.product.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p>Общая сумма: {{ total_price }} BYN</p>
+<a href="{% url 'payment' %}" class="btn btn-primary">Перейти к оплате</a>
+{% else %}
+<p>Ваша корзина пуста.</p>
+{% endif %}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .btn {
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<style>
+img{
+    width: 1000px;
+  height: 500px;
+  margin: 15px;
+  border-radius: 10px;
+}
+</style>
+
+  <h1>{{ news.title }}</h1>
+  <img src="{{ news.image.url }}" alt="Изображение новости" class="news-image">
+  <p>{{ news.content }}</p>
+{% endblock %}

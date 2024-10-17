@@ -1,14 +1,37 @@
 {% extends 'products/base.html' %}
-
 {% block content %}
+<style>
+  /* body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  } */
+  video {
+    width: 50%;
+    margin-top: 10px;
+  }
+</style>
+
   <h1>О нас</h1>
-  <p>{{ company_info.text }}</p>
   <img src="{{ company_info.logo.url }}" alt="Логотип компании">
-  {% if company_info.video %}
-    <video src="{{ company_info.video.url }}" controls></video>
-  {% endif %}
+  <p>{{ company_info.text }}</p>
   <h2>История</h2>
   <p>{{ company_info.history }}</p>
   <h2>Реквизиты</h2>
-  <p>{{ company_info.requisites }}</p>
+  <p></p>
+
+  <h2>Сертификат</h2>
+  <p>{{ company_info.certificate }}</p>
+
+  {% if company_info.video %}
+  <h2>Видео</h2>
+  <video src="{{ company_info.video.url }}" controls></video>
+{% endif %}
+
 {% endblock %}

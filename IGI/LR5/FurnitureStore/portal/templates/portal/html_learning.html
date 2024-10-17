@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title itemprop="name">Пример HTML-страницы</title>
+</head>
+<body>
+
+<header itemprop="header">
+    <h1 itemprop="headline">Пример HTML-страницы</h1>
+</header>
+
+<nav itemprop="nav">
+    <ul>
+        <li><a itemprop="url" href="#list">Списки</a></li>
+        <li><a itemprop="url" href="#quotes">Цитаты</a></li>
+        <li><a itemprop="url" href="#table">Таблица</a></li>
+        <li><a itemprop="url" href="#form">Форма</a></li>
+        <li><a itemprop="url" href="#media">Медиа</a></li>
+    </ul>
+</nav>
+
+<aside itemprop="aside">
+    <ul>
+        <li><a itemprop="url" href="#list">Списки</a></li>
+        <li><a itemprop="url" href="#quotes">Цитаты</a></li>
+        <li><a itemprop="url" href="#table">Таблица</a></li>
+        <li><a itemprop="url" href="#form">Форма</a></li>
+        <li><a itemprop="url" href="#media">Медиа</a></li>
+    </ul>
+</aside>
+
+<section id="list" itemprop="section">
+    <h2 itemprop="heading">Списки</h2>
+    <h3 itemprop="subheading">Нумерованный список</h3>
+    <ol itemprop="list">
+        <li itemprop="listItem">Первый элемент</li>
+        <li itemprop="listItem">Второй элемент</li>
+        <li itemprop="listItem">Третий элемент</li>
+    </ol>
+
+    <h3 itemprop="subheading">Маркированный список</h3>
+    <ul itemprop="list">
+        <li itemprop="listItem">Первый элемент</li>
+        <li itemprop="listItem">Второй элемент</li>
+        <li itemprop="listItem">Третий элемент</li>
+    </ul>
+
+    <h3 itemprop="subheading">Список определений</h3>
+    <dl itemprop="definitionList">
+        <dt itemprop="term">HTML</dt>
+        <dd itemprop="description">Язык разметки гипертекста.</dd>
+        <dt itemprop="term">CSS</dt>
+        <dd itemprop="description">Каскадные таблицы стилей.</dd>
+    </dl>
+</section>
+
+<p>
+    <strong>Элемент определения HTML</strong> (<strong
+      ><dfn>&lt;dfn&gt;</dfn></strong
+    >) используется для обозначения термина, определяемого в контексте фразы или
+    предложения.
+</p>
+
+<section id="quotes" itemprop="section">
+    <h2 itemprop="heading">Цитаты и аббревиатуры</h2>
+    <blockquote itemprop="quote" cite="https://example.com">
+        "Это пример цитаты из внешнего источника."
+    </blockquote>
+
+    <p itemprop="text">Использование аббревиатуры: <abbr itemprop="abbreviation" title="Hypertext Markup Language">HTML</abbr>.</p>
+
+    <h3 itemprop="subheading">Четверостишие</h3>
+    <pre itemprop="poem">
+Роза красная,
+Фиалка синяя,
+Сахар сладкий,
+А ты прекрасная.
+    </pre>
+</section>
+
+<section id="table" itemprop="section">
+    <h2 itemprop="heading">Таблица</h2>
+    <table itemprop="table" border="1">
+        <thead>
+            <tr>
+                <th itemprop="tableHeaderCell">Имя</th>
+                <th itemprop="tableHeaderCell">Возраст</th>
+                <th itemprop="tableHeaderCell" colspan="2">Контакт</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td itemprop="tableDataCell">Иван</td>
+                <td itemprop="tableDataCell">25</td>
+                <td itemprop="tableDataCell">Email</td>
+                <td itemprop="tableDataCell">ivan@example.com</td>
+            </tr>
+            <tr>
+                <td itemprop="tableDataCell">Елена</td>
+                <td itemprop="tableDataCell">30</td>
+                <td itemprop="tableDataCell" colspan="2">elena@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="media" itemprop="section">
+    <h2 itemprop="heading">Медиа</h2>
+    <figure itemprop="image">
+        <image itemprop="image" width="100" height="100" src="https://avatars.mds.yandex.net/i?id=fc0e813c7aa52b349c80764409c97e3e_l-5288046-images-thumbs&n=13" alt="Пример изображения">
+        <figcaption itemprop="caption">Пример изображения</figcaption>
+    </figure>
+
+    <h3 itemprop="subheading">Аудио</h3>
+    <audio itemprop="audio" controls>
+        <source itemprop="audioSource" src="{% static 'music/Galibri & Mavik - Федерико Феллини.mp3' %}" type="audio/mpeg" >
+        Ваш браузер не поддерживает тег аудио.
+    </audio>
+</section>
+
+<h2 itemprop="heading">Листинг</h2>
+<code>
+    int main(){
+        int a;
+        int b;
+    }
+</code>
+
+<h2 itemprop="heading">Ввод с клавиатуры</h2>
+<kdb>
+ test data
+</kdb>
+
+<footer itemprop="footer">
+    <p itemprop="copyright">&copy; 2024 Пример HTML-страницы</p>
+    <a itemprop="download" href="https://belstu.by/userfolder/%D0%9A%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%BC%D0%B5%D0%BD%D1%82%D0%B0,%20%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B9%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0%20%D0%B8%20%D1%83%D1%81%D1%82%D0%BE%D0%B9%D1%87%D0%B8%D0%B2%D0%BE%D0%B3%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8F/bgtu.pdf" download>Скачать документ</a>
+</footer>
+
+</body>
+</html>

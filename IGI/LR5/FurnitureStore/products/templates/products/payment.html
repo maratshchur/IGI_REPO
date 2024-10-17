@@ -1,0 +1,46 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<h1>Оплата товаров</h1>
+
+{% if cart_items %}
+<form action="{% url 'process_payment' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>Общая сумма: {{ total_price }} BYN</p>
+    <button type="submit" class="btn btn-primary">Оплатить</button>
+</form>
+
+{% else %}
+<p>Ваша корзина пуста.</p>
+{% endif %}
+
+<style>
+    form {
+        max-width: 400px;
+        margin: auto;
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+    input, select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+    }
+    .btn {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+{% endblock %}

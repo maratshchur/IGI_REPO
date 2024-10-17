@@ -89,7 +89,7 @@ def plot_sales_data(monthly_sales, trends):
     fig2, ax2 = plt.subplots(figsize=(8, 6))
     
     for i, (product_name, trend) in enumerate(itertools.islice(trends.items(), 5)):
-        x = np.arange(1, 8)  # months 1-12
+        x = np.arange(1, 12)  # months 1-12
         y = trend(x)
         ax2.plot(x, y, '--', label=f'{product_name}: линейный тренд')
     

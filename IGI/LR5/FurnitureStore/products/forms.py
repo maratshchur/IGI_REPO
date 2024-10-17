@@ -2,6 +2,10 @@ from datetime import datetime, timedelta
 from django import forms
 from.models import Order, ProductType, Promocode, PickupPoint, Product
 
+class PaymentForm(forms.Form):
+    pickup_location = forms.ModelChoiceField(queryset=PickupPoint.objects.all(), required=True)
+    promo_code = forms.CharField(max_length=20, required=False)
+    
 class OrderForm(forms.ModelForm):
     quantity = forms.IntegerField(label='Количество', min_value=1)
     promocode = forms.CharField(label='Промокод', required=False)

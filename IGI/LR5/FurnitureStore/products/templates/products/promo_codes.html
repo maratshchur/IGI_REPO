@@ -1,24 +1,30 @@
 {% extends 'products/base.html' %}
 
 {% block content %}
-  <h1>Промокоды</h1>
-  <ul>
+  <h1 style="text-align: center; margin-bottom: 20px;">Промокоды</h1>
+  <ul style="list-style-type: none; padding: 0; max-width: 800px; margin: 0 auto;">
     {% for promo_code in promo_codes %}
-      <li>
-        {{ promo_code.code }} ({{ promo_code.discount }}%)
-        {% if request.user.is_superuser %}
-          {% if promo_code.is_active %}
-            <span class="badge badge-success">Активен</span>
-          {% else %}
-            <span class="badge badge-danger">Не активен</span>
+      <li style="margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 1.2em; font-weight: bold;">{{ promo_code.code }} ({{ promo_code.discount }}%)</span>
+        <div style="text-align: right;">
+          {% if request.user.is_superuser %}
+            {% if promo_code.is_active %}
+              <span class="badge" style="background-color: #28a745; color: white; padding: 5px 10px; border-radius: 5px; margin-left: 10px;">Активен</span>
+            {% else %}
+              <span class="badge" style="background-color: #dc3545; color: white; padding: 5px 10px; border-radius: 5px; margin-left: 10px;">Не активен</span>
+            {% endif %}
+            <div style="margin-top: 10px;">
+              <a href="{% url 'update_promocode' promo_code.id %}" class="btn" style="background-color: #6c757d; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 5px;">Изменить</a>
+              <a href="{% url 'delete_promocode' promo_code.id %}" class="btn" style="background-color: #dc3545; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Удалить</a>
+            </div>
           {% endif %}
-          <a href="{% url 'update_promocode' promo_code.id %}" class="btn btn-secondary">Изменить</a>
-          <a href="{% url 'delete_promocode' promo_code.id %}" class="btn btn-danger">Удалить</a>
-        {% endif %}
+        </div>
       </li>
     {% endfor %}
   </ul>
   {% if request.user.is_superuser %}
-    <a href="{% url 'create_promocode' %}" class="btn btn-primary">Добавить промокод</a>
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="{% url 'create_promocode' %}" class="btn" style="background-color: #007BFF; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Добавить промокод</a>
+    </div>
   {% endif %}
 {% endblock %}

@@ -1,4 +1,4 @@
-from django.urls import re_path
+from django.urls import re_path, path
 from . import views
 
 urlpatterns = [
@@ -12,7 +12,7 @@ urlpatterns = [
     re_path(r'^orders/create/(?P<product_id>\d+)$', views.create_order, name='create_order'),
     re_path(r'^search/$', views.search_products, name='search_products'),
     re_path(r'^filter/$', views.filter_products, name='filter_products'),
-    re_path(r'^orders/$', views.user_orders, name='orders'),
+    re_path(r'^orders/$', views.user_orders, name='cart'),
 
     re_path(r'^employee_dashboard/$', views.employee_dashboard, name='employee_dashboard'),
     re_path(r'^create_product/$', views.create_product, name='create_product'),
@@ -36,4 +36,12 @@ urlpatterns = [
     re_path(r'^customer_list/$', views.customer_list, name='customer_list'),
 
     re_path(r'^dashboard/$', views.admin_dashboard, name='admin_dashboard'),
+    path('add_to_cart/<int:pk>/', views.add_to_cart, name='add_to_cart'),
+    path('update_cart/<int:pk>/', views.update_cart, name='update_cart'),
+    path('remove_from_cart/<int:pk>/', views.remove_from_cart, name='remove_from_cart'),
+    path('cart/', views.cart, name='cart'),
+    path('payment/', views.payment, name='payment'),
+    path('process_payment/', views.process_payment, name='process_payment'),
+    path('employees/', views.employees, name='employees')
+
 ]

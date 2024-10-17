@@ -41,9 +41,7 @@ class Product(models.Model):
         return self.name
     
     
-    
-
-    
+        
 class Order(models.Model):
     date = models.DateField(verbose_name='Дата заказа')
     completion_date = models.DateField(verbose_name='Дата выполнения заказа')
@@ -76,3 +74,28 @@ class Promocode(models.Model):
 
     def __str__(self):
         return self.code
+    
+
+
+class Cart(models.Model):
+    user = models.OneToOneField(Customer, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Корзина'
+        verbose_name_plural = 'Корзины'
+
+    def __str__(self):
+        return f"Cart of {self.user.username}"
+
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    class Meta:
+        verbose_name = 'Элемент корзины'
+        verbose_name_plural = 'Элемент корзины'
+
+    def __str__(self):
+        return f"{self.quantity} of {self.product.name}"

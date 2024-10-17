@@ -1,15 +1,37 @@
 {% extends 'products/base.html' %}
-
 {% block content %}
+
+<style>
+img {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.read-more {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  color: #23527c;
+  text-decoration: underline;
+}
+</style>
+
+
   <h1>Новости</h1>
   <ul>
     {% for news in news_list %}
       <li>
+        <img src="{{ news.image.url }}" alt="Изображение новости" class="news-image">
         <h2>{{ news.title }}</h2>
-        <p>{{ news.content|truncatewords:20 }}</p>
-        {% comment %} <p><a href="{% url 'news_detail' news.pk %}">Читать далее</a></p> {% endcomment %}
-        <img src="{{ news.image.url }}" alt="Изображение новости">
+        <p>{{ news.content|truncatewords:10 }}...</p>
+        <a href="{% url 'news_detail' news.pk %}" class="read-more">Читать далее</a>
+        <br><br><br><br>
       </li>
     {% endfor %}
   </ul>
 {% endblock %}
+

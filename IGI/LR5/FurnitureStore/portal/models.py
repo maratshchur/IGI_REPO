@@ -13,6 +13,7 @@ class CompanyInfo(models.Model):
     video = models.FileField(upload_to='company/', blank=True, null=True)
     history = models.TextField(blank=True, null=True)
     requisites = models.TextField(blank=True, null=True)
+    certificate = models.TextField()
 
 class News(models.Model):
     title = models.CharField(max_length=200)
@@ -39,3 +40,11 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review by {self.user.user.username} on {self.date}"
+    
+class Partner(models.Model):
+    name = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to='partners/')
+    website = models.URLField()
+
+    def __str__(self):
+        return self.name

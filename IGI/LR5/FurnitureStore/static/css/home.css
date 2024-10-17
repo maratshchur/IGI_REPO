@@ -1,0 +1,151 @@
+#hero-section {
+    background-color: #8E9D74; /*  Replace with the exact hex code from image */
+    padding: 100px;
+    margin: -32px; 
+    height: 400px;
+    position: relative;
+  }
+  
+  .hero > img{
+    top: 300px;
+    left: 35%;
+    height: 70%;
+    width: auto;
+    position: absolute;
+
+  }
+
+  .hero > img.wall-picture{
+    top: 50px;
+    left: 55%;
+    height: 45%;
+    width: auto;
+    position: absolute;
+
+  }
+  #hero-section h1.company-name {
+    font-size: 3.2em; /* Adjust font size as needed */
+    margin-top: -20px;
+    margin-bottom: 30px;
+    padding-left: 15%;
+    color: #f1f5ea;
+    text-align: center;
+  }
+
+  #hero-section h1 {
+    font-size: 3em; /* Adjust font size as needed */
+    margin-top: -20px;
+    margin-bottom: 20px;
+    color: #f1f5ea;
+    text-align: left;
+  }
+  
+  #hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #f1f5ea; /* Or another suitable color */
+    text-align: left;
+
+  }
+
+  #hero-section button {
+    padding: 15px 30px;
+    font-size: 1em;
+    margin: 0 10px; /* Add spacing between buttons */
+    background-color: #2E3315; /* Adjust color as needed */
+    color: #f1f5ea;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+  }
+   
+  #hero-section button:hover {
+    color: #d1d1d1;
+  }
+
+/* .filter-form{
+    margin-top: 100px;
+} */
+.search-form {
+  margin-top: 200px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-form .input-group {
+  margin-bottom: 20px;
+}
+
+.search-form input[type="search"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.search-form button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.search-form button[type="submit"]:hover {
+  background-color: #23527c;
+}
+
+.filter-form {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-form .row {
+  margin-bottom: 20px;
+}
+
+.filter-form label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filter-form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.filter-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.filter-form button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.filter-form button[type="submit"]:hover {
+  background-color: #23527c;
+}

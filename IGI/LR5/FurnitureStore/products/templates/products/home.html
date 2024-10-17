@@ -1,119 +1,155 @@
 {% extends 'products/base.html' %}
-
+{% load static %}
 {% block content %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
+<body>
+<div id="hero-section" class="hero">
+    <h1>Furniture that<br> everyone<br> Loves</h1>
+    <p>We have 500+ items and our customers love all<br> Our furniture and quality products</p>
+    <!-- <p class="company-name">Muebles<br>Elegantes</p> -->
+    <button class="btn">Buy Now</button>  <!-- Added class btn -->
+    <button class="btn">Explore</button>  <!-- Added class btn -->
+    <img src="{% static 'images/sofa.png' %}" alt="logo" class="sofa" >
+    <!-- <img src="{% static 'images/wall_picture.png' %}" alt="logo" class="wall-picture" > -->
 
-<br> <br>
-
-<!-- Search form -->
-<form action="{% url 'search_products' %}" method="get" class="search-form">
-    <input type="search" name="q" placeholder="Поиск по названию товара" value="{{ request.GET.q }}" class="form-control">
-    <button type="submit" class="btn btn-primary">Искать</button>
-</form>
-
-<!-- Filter form -->
-<form action="{% url 'filter_products' %}" method="get" class="filter-form">
-    <label for="price_min" class="label">Цена от:</label>
-    <input type="number" name="price_min" id="price_min" value="{{ request.GET.price_min }}" class="form-control">
-    <label for="price_max" class="label">до:</label>
-    <input type="number" name="price_max" id="price_max" value="{{ request.GET.price_max }}" class="form-control">
-    BYN
-    <br> <br>
-    <label for="product_type" class="label">Тип товара:</label>
-    <select name="product_type" id="product_type" class="form-control">
-        <option value="">Все</option>
-        {% for type in product_types %}
-            <option value="{{ type }}" {% if request.GET.product_type == type %}selected{% endif %}>{{ type }}</option>
-        {% endfor %}
-    </select>
-    <button type="submit" class="btn btn-primary">Фильтровать</button>
-</form>
-
-<!-- User menu -->
-{% if request.user.is_authenticated %}
-<div class="user-menu" style="float: right; margin-top: -20px;">
-    <p>Здравствуйте, {{ request.user.username }}!</p>
-    <div class="menu-links">
-        {% if request.user.is_staff and not request.user.is_superuser %}
-            <a href="{% url 'employee_dashboard' %}" class="btn btn-primary">Панель сотрудника</a>
-        {% endif %}
-        {% if request.user.is_superuser %}
-            <a href="{% url 'employee_register' %}" class="btn btn-primary">Регистрация сотрудника</a>
-            <a href="{% url 'admin_dashboard' %}" class="btn btn-primary">Административная панель</a>
-        {% endif %}
-        {% if not request.user.is_staff and not request.user.is_superuser %}
-            <a href="{% url 'orders' %}" class="btn btn-primary">Мои заказы</a>
-        {% endif %}
-        <a href="{% url 'quote_of_the_day' %}" class="btn btn-primary">Цитата дня</a>
-        <a href="{% url 'person_gender' %}" class="btn btn-primary">Пол по имени</a>
-    </div>
+    
 </div>
-{% endif %}
 
-<!-- Product list -->
-<p>
-    <a href="{% url 'products_list' %}" class="btn btn-primary">Все товары</a>
-    <a href="{% url 'product_types_list' %}" class="btn btn-primary">Типы товаров</a>
-</p>
+<!-- Search Form -->
+ <!-- Search Form -->
+<!-- <div class="search-form">
+    <form action="{% url 'search_products' %}" method="get" class="search-form">
+      <div class="input-group">
+        <input type="search" name="q" placeholder="Поиск по названию товара" value="{{ request.GET.q }}" class="form-control">
+        <button type="submit" class="btn btn-primary">Искать</button>
+      </div>
+    </form>
+  </div>
+  
+  <div class="filter-form">
+    <form action="{% url 'filter_products' %}" method="get" class="filter-form">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="price_min" class="label">Цена от:</label>
+          <input type="number" name="price_min" id="price_min" value="{{ request.GET.price_min }}" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="price_max" class="label">до:</label>
+          <input type="number" name="price_max" id="price_max" value="{{ request.GET.price_max }}" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="product_type" class="label">Тип товара:</label>
+          <select name="product_type" id="product_type" class="form-control">
+            <option value="">Все</option>
+            {% for type in product_types %}
+              <option value="{{ type }}" {% if request.GET.product_type == type %}selected{% endif %}>{{ type }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Фильтровать</button>
+    </form>
+  </div> -->
 
+<!-- Catalog of Products -->
+<section>
+    <h1></h1>
+    <form method="GET" action="{% url 'zoopark:index' %}">
+        <div class="input-name">
+            <input accesskey="q" name="name" id="name" type="text" placeholder=""/>
+            <label for="name">Имя </label>  
+            <input type="submit" value="Поиск" class="custom-pointer">
+        </div>
+        {% comment %} <label for="age">Сортировать по возрасту </label> {% endcomment %}
+        {% comment %} <input type="checkbox" id="age" name="age"/> {% endcomment %}
+    </form>
+    {% if animals%}
+        <div class="animal-cards-container">
+            {% for animal in animals %}
+                <article>
+                    <a class="custom-pointer" href="{% url 'zoopark:animal' animal.pk %}">
+                        <div class="animal-card">
+                            <img src="{% if animal.image %}{{ animal.image.url }}{% else %}{% static 'media/images/no.jpg' %}{% endif %}" alt="">
+                            {% comment %} <img src="{% static animal.image.url %}" alt="{% static 'images/no.jpg' %}"> {% endcomment %}
+                            <div class="animal-info">
+                                <h2>{{ animal.name }}</h2>
+                                <hr/>
+                                <p>{{ animal.description }}</p> 
+                                <ul class="animal-details">
+                                    <li><span>Вид:</span> {{ animal.type }}</li>
+                                    <li><span>Семейство:</span> {{ animal.family }}</li>
+                                    <li><span>Возраст: </span>{{ animal.age }} {% if animal.age == 1 %}год{% elif animal.age < 5 and animal.age > 1 %}года{% else %}лет{% endif %}</li>
+                                    <li><span>Вольер:</span> {{ animal.aviary }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            {% endfor %}
+        </div>
+        {% else %}
+            <div class="empty-container"><p>К сожалению, в нашем зоопарке нет животных с таким именем.</p></div>            
+        {% endif %}        
+</section>
 {% if products %}
-<table class="product-list">
-    <tr>
+<div class="product-grid">
     {% for product in products %}
-        <td style="width: 40%; vertical-align: top;">
-            <h2><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h2>
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 150px; height: 150px;">
-            <p>Код: {{ product.code }}</p>
-            <p>Тип: {{ product.product_type }}</p>
-            <p>Модель: {{ product.model }}</p>
-            <p>Цена: {{ product.price }}</p>
-            {% if request.user.is_authenticated and not request.user.is_staff and not request.user.is_superuser %}
-                <a href="{% url 'create_order' product.id %}" class="btn btn-primary">Заказать</a>
-            {% endif %}
-        </td>
-        {% if forloop.counter|divisibleby:4 %}
-            </tr><tr>
+    <div class="product-card">
+        <h2 class="product-title"><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h2>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+        <p><strong>Код:</strong> {{ product.code }}</p>
+        <p><strong>Тип:</strong> {{ product.product_type }}</p>
+        <p><strong>Модель:</strong> {{ product.model }}</p>
+        <p><strong>Цена:</strong> {{ product.price }} BYN</p>
+        {% if request.user.is_authenticated and not request.user.is_staff and not request.user.is_superuser %}
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Добавить в корзину</a>
         {% endif %}
+    </div>
     {% endfor %}
-    </tr>
-</table>
+</div>
 {% else %}
     <p>Товары не найдены.</p>
 {% endif %}
 
+
+<!-- Latest Article -->
+<h2>Последние новости</h2>
+{% if latest_article %}
+<ul>
+        <img src="{{ latest_article.image.url }}" alt="Изображение новости" class="news-image" height="100" width="100" />
+        <h2>{{ latest_article.title }}</h2>
+        <p>{{ latest_article.content|truncatewords:10 }}...</p>
+        <a href="{% url 'news_detail' latest_article.pk %}" class="read-more">Читать далее</a>
+  </ul>
+{% endif %}
+
+<!-- Partners List -->
+<h2 style="text-align: left;">Партнеры</h2>
+<ul style="list-style-type: none; padding: 0; display: flex; flex-direction: row-reverse; justify-content: flex-end;" class="partner-list">
+    {% for partner in partners %}
+    <li style="margin: 0 15px;">
+        <a href="{{ partner.website }}" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center;">
+            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" width="100" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+            <span style="display: block; margin-top: 5px; text-align: center;">{{ partner.name }}</span>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
 <!-- Calendar -->
 <h2>Календарь</h2>
 <pre>{{ calendar }}</pre>
-
-<style>
-    .search-form {
-        margin-bottom: 20px;
-    }
-    .filter-form {
-        margin-bottom: 20px;
-    }
-    .user-menu {
-        background-color: #f0f0f0;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-    .menu-links {
-        display: flex;
-        flex-direction: column;
-    }
-    .menu-links a {
-        margin-bottom: 10px;
-    }
-    .product-list {
-        border-collapse: collapse;
-    }
-    .product-list td {
-        border: 1px solid #ddd;
-        padding: 10px;
-    }
-    .product-list img {
-        margin-bottom: 10px;
-    }
-</style>
-
+</body>
 {% endblock %}
+<header>
+    <!-- <h1>Логотип компании</h1> -->
+    <div style="float: left; margin-top: -20px;">
+        <img src="{% static 'images/logo.jpg' %}" alt="logo" width="40%" height="40%" >
+    </div>
+    <div>
+        <img src="{% static 'images/banner1.jpeg' %}" alt="Banner 1" width="100%" height="150%">
+        <!-- <img src="{% static 'images/banner2.jpg' %}" alt="Banner 2"> -->
+    </div>
+</header>
